@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dois por Trufas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --cor-rosa: #e6a8b8;
+            --cor-rosa-escuro: #d68ea0;
+            --cor-marrom: #5c3c23;
+            --cor-marrom-claro: #8a6d4f;
+            --cor-caqui: #d2b48c;
+            --cor-caqui-claro: #e6d2b5;
+            --cor-texto: #3a3a3a;
+            --cor-fundo: #fff8f5;
+            --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transicao: all 0.3s ease;
+            --borda-arredondada: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--cor-marrom), var(--cor-marrom-claro));
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: var(--sombra-suave);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+            background-size: 100px 100px;
+            opacity: 0.3;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--cor-rosa);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .slogan {
+            font-size: 1.2rem;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 1.2rem;
+            background: linear-gradient(to right, var(--cor-caqui-claro), var(--cor-caqui));
+            border-radius: var(--borda-arredondada);
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicao);
+        }
+
+        .social:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social a {
+            display: flex;
+            align-items: center;
+            color: var(--cor-marrom);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3rem;
+            transition: var(--transicao);
+        }
+
+        .social a:hover {
+            color: var(--cor-marrom-claro);
+        }
+
+        .social i {
+            font-size: 1.8rem;
+            margin-right: 10px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--cor-marrom);
+            margin: 2.5rem 0;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--cor-rosa), var(--cor-caqui));
+            border-radius: 3px;
+        }
+
+        .produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .produto {
+            background-color: white;
+            border-radius: var(--borda-arredondada);
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            transition: var(--transicao);
+            position: relative;
+        }
+
+        .produto:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .produto-img {
+            width: 100%;
+            height: 200px;
+            background-color: var(--cor-caqui-claro);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cor-marrom);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* INSTRUÇÕES: Substitua o conteúdo deste elemento pela imagem da trufa.
+           Para adicionar uma imagem, remova o texto dentro da div e adicione:
+          
+           
+           Exemplo:
+           <div class="produto-img">
+               <img src="imagens/beijinho.jpg" alt="Trufa de Beijinho">
+           </div>
+        */
+
+        .produto-img i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .produto-info {
+            padding: 1.5rem;
+        }
+
+        .produto h3 {
+            color: var(--cor-marrom);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+            border-bottom: 2px dashed var(--cor-caqui-claro);
+            padding-bottom: 8px;
+        }
+
+        .produto p {
+            color: var(--cor-texto);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .tamanhos {
+            margin: 1.2rem 0;
+        }
+
+        .tamanho {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            align-items: center;
+        }
+
+        .tamanho-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tamanho-nome {
+            font-weight: bold;
+            color: var(--cor-marrom);
+        }
+
+        .tamanho-peso {
+            font-size: 0.85rem;
+            color: #777;
+        }
+
+        .tamanho-preco {
+            font-weight: bold;
+            color: var(--cor-marrom);
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            background: linear-gradient(to right, var(--cor-rosa), var(--cor-rosa-escuro));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transicao);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background: linear-gradient(to right, var(--cor-rosa-escuro), var(--cor-rosa));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn i {
+            margin-right: 6px;
+        }
+
+        .carrinho {
+            background-color: white;
+            border-radius: var(--borda-arredondada);
+            padding: 2rem;
+            box-shadow: var(--sombra-suave);
+            margin: 2.5rem 0;
+            position: relative;
+        }
+
+        .carrinho-titulo {
+            display: flex;
+            align-items: center;
+            color: var(--cor-marrom);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--cor-caqui);
+            padding-bottom: 1rem;
+        }
+
+        .carrinho-titulo i {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            color: var(--cor-rosa);
+        }
+
+        .carrinho-itens {
+            margin-bottom: 1.5rem;
+        }
+
+        .carrinho-vazio {
+            text-align: center;
+            padding: 2rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .carrinho-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-nome {
+            font-weight: bold;
+            color: var(--cor-marrom);
+        }
+
+        .item-detalhes {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .item-acoes {
+            display: flex;
+            align-items: center;
+        }
+
+        .item-preco {
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .btn-remover {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+
+        .btn-remover:hover {
+            background-color: #f5c6cb;
+            transform: scale(1.1);
+        }
+
+        .carrinho-total {
+            font-weight: bold;
+            text-align: right;
+            margin: 1.5rem 0;
+            font-size: 1.3rem;
+            color: var(--cor-marrom);
+            padding: 1rem;
+            background-color: var(--cor-caqui-claro);
+            border-radius: 8px;
+        }
+
+        .acoes-carrinho {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+        .nota-fiscal {
+            background-color: white;
+            border-radius: var(--borda-arredondada);
+            padding: 2rem;
+            box-shadow: var(--sombra-suave);
+            margin: 2.5rem 0;
+            display: none;
+        }
+
+        .nota-titulo {
+            display: flex;
+            align-items: center;
+            color: var(--cor-marrom);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--cor-caqui);
+            padding-bottom: 1rem;
+        }
+
+        .nota-titulo i {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            color: var(--cor-rosa);
+        }
+
+        .nota-instrucoes {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid var(--cor-rosa);
+        }
+
+        .nota-texto {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin: 1.5rem 0;
+            white-space: pre-wrap;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .acoes-nota {
+            display: flex;
+            gap: 1rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--cor-marrom), var(--cor-marrom-claro));
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+            background-size: 100px 100px;
+            opacity: 0.3;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contato {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .contato-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .contato-item i {
+            margin-right: 8px;
+            color: var(--cor-rosa);
+        }
+
+        @media (max-width: 768px) {
+            .produtos {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .acoes-carrinho {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .acoes-carrinho .btn {
+                width: 100%;
+            }
+
+            .acoes-nota {
+                flex-direction: column;
+            }
+
+            .contato {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .carrinho,
+            .nota-fiscal {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .produto {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .produto:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .produto:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .produto:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .produto:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .produto:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .produto:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .produto:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .produto:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        .produto:nth-child(10) {
+            animation-delay: 0.9s;
+        }
+
+        .produto:nth-child(11) {
+            animation-delay: 1s;
+        }
+
+        .produto:nth-child(12) {
+            animation-delay: 1.1s;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Dois por Trufas</div>
+        <p class="slogan">Delícias artesanais para adoçar seu dia</p>
+    </header>
+
+    <div class="container">
+        <div class="social">
+            <a href="https://www.instagram.com/doisportrufas" target="_blank">
+                <i class="fab fa-instagram"></i>
+                @doisportrufas
+            </a>
+        </div>
+
+        <h2 class="section-title">Nossos Sabores</h2>
+
+        <div class="produtos">
+            <!-- Os produtos serão adicionados aqui via JavaScript -->
+        </div>
+
+        <div class="carrinho">
+            <h2 class="carrinho-titulo"><i class="fas fa-shopping-cart"></i> Carrinho de Compras</h2>
+            <div class="carrinho-itens">
+                <p id="carrinho-vazio" class="carrinho-vazio">Seu carrinho está vazio</p>
+                <!-- Itens do carrinho serão adicionados aqui via JavaScript -->
+            </div>
+            <div class="carrinho-total">
+                Total: R$ <span id="valor-total">0.00</span>
+            </div>
+            <div class="acoes-carrinho">
+                <button class="btn" id="limpar-carrinho"><i class="fas fa-trash-alt"></i> Limpar Carrinho</button>
+                <button class="btn" id="finalizar-pedido"><i class="fas fa-check-circle"></i> Finalizar Pedido</button>
+            </div>
+        </div>
+
+        <div class="nota-fiscal" id="nota-fiscal">
+            <h2 class="nota-titulo"><i class="fas fa-receipt"></i> Nota do Pedido</h2>
+            <p class="nota-instrucoes">Copie o texto abaixo e envie para nosso WhatsApp:</p>
+            <div class="nota-texto" id="nota-texto"></div>
+            <div class="acoes-nota">
+                <button class="btn" id="copiar-nota"><i class="fas fa-copy"></i> Copiar Nota</button>
+                <button class="btn" id="enviar-whatsapp"><i class="fab fa-whatsapp"></i> Enviar via WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Dois por Trufas - Todos os direitos reservados</p>
+            <div class="contato">
+                <div class="contato-item">
+                    <i class="fab fa-whatsapp"></i>
+                    +55 83 9358-3845
+                </div>
+                <div class="contato-item">
+                    <i class="fab fa-instagram"></i>
+                    @doisportrufas
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dados dos produtos
+        const produtos = [
+            {
+                id: 1,
+                nome: "Beijinho",
+                descricao: "Deliciosa trufa sabor beijinho",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/beijinho.jpg"
+            },
+            {
+                id: 2,
+                nome: "Brigadeiro",
+                descricao: "Clássica trufa de brigadeiro",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/brigadeiro.jpg"
+            },
+            {
+                id: 3,
+                nome: "Capuccino",
+                descricao: "Trufa com sabor de capuccino",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/capuccino.jpg"
+            },
+            {
+                id: 4,
+                nome: "Doce de Leite",
+                descricao: "Trufa recheada com doce de leite",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/doce_de_leite.jpg"
+            },
+            {
+                id: 5,
+                nome: "Dois Amores",
+                descricao: "Trufa com chocolate branco e ao leite",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/dois_amores.jpg"
+            },
+            {
+                id: 6,
+                nome: "Morango",
+                descricao: "Trufa com sabor de morango",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/morango.jpg"
+            },
+            {
+                id: 7,
+                nome: "Mousse de Maracujá",
+                descricao: "Trufa com recheio de mousse de maracujá",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/mousse_maracuja.jpg"
+            },
+            {
+                id: 8,
+                nome: "Mousse de Limão",
+                descricao: "Trufa com recheio de mousse de limão",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/mousse_limao.jpg"
+            },
+            {
+                id: 9,
+                nome: "Napolitano",
+                descricao: "Trufa com sabores de chocolate, morango e baunilha",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/napolitano.jpg"
+            },
+            {
+                id: 10,
+                nome: "Ninho",
+                descricao: "Trufa com sabor de leite ninho",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/ninho.jpg"
+            },
+            {
+                id: 11,
+                nome: "Ninho com Nutella",
+                descricao: "Trufa de leite ninho com Nutella",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/ninho_nutella.jpg"
+            },
+            {
+                id: 12,
+                nome: "Paçoca",
+                descricao: "Trufa com sabor de paçoca",
+                // INSTRUÇÕES: Adicione o caminho da imagem quando tiver a foto
+                imagem: "DOISPORTRUFA/imagens/pacoca.jpg"
+            }
+        ];
+
+        // Tamanhos e preços
+        const tamanhos = [
+            { id: 1, nome: "Média", peso: "45g", preco: 3.00 },
+            { id: 2, nome: "Grande", peso: "60g", preco: 4.00 }
+        ];
+
+        // Carrinho de compras
+        let carrinho = [];
+
+        // Função para renderizar os produtos
+        function renderizarProdutos() {
+            const produtosContainer = document.querySelector('.produtos');
+            produtosContainer.innerHTML = '';
+
+            produtos.forEach(produto => {
+                const produtoElement = document.createElement('div');
+                produtoElement.className = 'produto';
+
+                // Criar o elemento de imagem
+                let imagemHTML = '';
+                if (produto.imagem) {
+                    // Se tiver imagem definida, usa ela
+                    imagemHTML = `<img src="${produto.imagem}" alt="${produto.nome}">`;
+                } else {
+                    // Se não tiver imagem, mostra placeholder com instruções
+                    imagemHTML = `
+                        <i class="fas fa-cookie-bite"></i>
+                        <p>Adicione a foto da trufa ${produto.nome} aqui</p>
+                        <p><small>Veja instruções no código</small></p>
+                    `;
+                }
+
+                let tamanhoHTML = '';
+                tamanhos.forEach(tamanho => {
+                    // Ajuste de preço para Ninho com Nutella
+                    let preco = tamanho.preco;
+                    if (produto.nome === "Ninho com Nutella") {
+                        preco += 0.50;
+                    }
+
+                    tamanhoHTML += `
+                        <div class="tamanho">
+                            <div class="tamanho-info">
+                                <span class="tamanho-nome">${tamanho.nome}</span>
+                                <span class="tamanho-peso">${tamanho.peso}</span>
+                            </div>
+                            <span class="tamanho-preco">R$ ${preco.toFixed(2)}</span>
+                        </div>
+                        <button class="btn" onclick="adicionarAoCarrinho(${produto.id}, ${tamanho.id}, '${produto.nome}', '${tamanho.nome}', ${preco})">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    `;
+                });
+
+                produtoElement.innerHTML = `
+                    <div class="produto-img">
+                        ${imagemHTML}
+                    </div>
+                    <div class="produto-info">
+                        <h3>${produto.nome}</h3>
+                        <p>${produto.descricao}</p>
+                        <div class="tamanhos">
+                            ${tamanhoHTML}
+                        </div>
+                    </div>
+                `;
+
+                produtosContainer.appendChild(produtoElement);
+            });
+        }
+
+        // Função para adicionar produto ao carrinho
+        function adicionarAoCarrinho(produtoId, tamanhoId, produtoNome, tamanhoNome, preco) {
+            // Verificar se o produto já está no carrinho
+            const itemExistente = carrinho.find(item =>
+                item.produtoId === produtoId && item.tamanhoId === tamanhoId
+            );
+
+            if (itemExistente) {
+                itemExistente.quantidade += 1;
+            } else {
+                carrinho.push({
+                    produtoId,
+                    tamanhoId,
+                    produtoNome,
+                    tamanhoNome,
+                    preco,
+                    quantidade: 1
+                });
+            }
+
+            // Mostrar notificação
+            mostrarNotificacao(`${produtoNome} (${tamanhoNome}) adicionado ao carrinho!`);
+
+            atualizarCarrinho();
+        }
+
+        // Função para mostrar notificação
+        function mostrarNotificacao(mensagem) {
+            // Criar elemento de notificação
+            const notificacao = document.createElement('div');
+            notificacao.className = 'notificacao';
+            notificacao.textContent = mensagem;
+            notificacao.style.position = 'fixed';
+            notificacao.style.bottom = '20px';
+            notificacao.style.right = '20px';
+            notificacao.style.backgroundColor = 'var(--cor-rosa)';
+            notificacao.style.color = 'white';
+            notificacao.style.padding = '10px 20px';
+            notificacao.style.borderRadius = '5px';
+            notificacao.style.boxShadow = '0 3px 10px rgba(0,0,0,0.2)';
+            notificacao.style.zIndex = '1000';
+            notificacao.style.opacity = '0';
+            notificacao.style.transform = 'translateY(20px)';
+            notificacao.style.transition = 'all 0.3s ease';
+
+            document.body.appendChild(notificacao);
+
+            // Mostrar notificação
+            setTimeout(() => {
+                notificacao.style.opacity = '1';
+                notificacao.style.transform = 'translateY(0)';
+            }, 10);
+
+            // Remover notificação após 3 segundos
+            setTimeout(() => {
+                notificacao.style.opacity = '0';
+                notificacao.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    document.body.removeChild(notificacao);
+                }, 300);
+            }, 3000);
+        }
+
+        // Função para remover item do carrinho
+        function removerDoCarrinho(index) {
+            const item = carrinho[index];
+            carrinho.splice(index, 1);
+            mostrarNotificacao(`${item.produtoNome} removido do carrinho!`);
+            atualizarCarrinho();
+        }
+
+        // Função para atualizar o carrinho
+        function atualizarCarrinho() {
+            const carrinhoItens = document.querySelector('.carrinho-itens');
+            const carrinhoVazio = document.getElementById('carrinho-vazio');
+            const valorTotal = document.getElementById('valor-total');
+
+            if (carrinho.length === 0) {
+                carrinhoItens.innerHTML = '<p id="carrinho-vazio" class="carrinho-vazio">Seu carrinho está vazio</p>';
+                valorTotal.textContent = '0.00';
+                return;
+            }
+
+            let total = 0;
+            let html = '';
+
+            carrinho.forEach((item, index) => {
+                const subtotal = item.preco * item.quantidade;
+                total += subtotal;
+
+                html += `
+                    <div class="carrinho-item">
+                        <div class="item-info">
+                            <div class="item-nome">${item.produtoNome}</div>
+                            <div class="item-detalhes">${item.tamanhoNome} (${item.quantidade}x R$ ${item.preco.toFixed(2)})</div>
+                        </div>
+                        <div class="item-acoes">
+                            <div class="item-preco">R$ ${subtotal.toFixed(2)}</div>
+                            <button class="btn-remover" onclick="removerDoCarrinho(${index})">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            carrinhoItens.innerHTML = html;
+            valorTotal.textContent = total.toFixed(2);
+        }
+
+        // Função para limpar o carrinho
+        function limparCarrinho() {
+            if (carrinho.length === 0) return;
+
+            carrinho = [];
+            mostrarNotificacao('Carrinho limpo com sucesso!');
+            atualizarCarrinho();
+            document.getElementById('nota-fiscal').style.display = 'none';
+        }
+
+        // Função para finalizar o pedido
+        function finalizarPedido() {
+            if (carrinho.length === 0) {
+                mostrarNotificacao('Seu carrinho está vazio!');
+                return;
+            }
+
+            const notaFiscal = document.getElementById('nota-fiscal');
+            const notaTexto = document.getElementById('nota-texto');
+
+            let texto = "🍫 *PEDIDO - DOIS POR TRUFAS* 🍫\n\n";
+            texto += "*Itens do Pedido:*\n";
+
+            let total = 0;
+
+            carrinho.forEach(item => {
+                const subtotal = item.preco * item.quantidade;
+                total += subtotal;
+
+                texto += `• ${item.quantidade}x ${item.produtoNome} (${item.tamanhoNome}) - R$ ${subtotal.toFixed(2)}\n`;
+            });
+
+            texto += "\n*Total do Pedido:* R$ " + total.toFixed(2);
+            texto += "\n\n*Dados para Entrega:*";
+            texto += "\n\n🔑*Nosso PIX: 8393583845*🔑";
+            texto += "\nNome: ";
+            texto += "\nEndereço: ";
+            texto += "\nForma de Pagamento: PIX";
+            texto += "\n\nSó aceitamos PIX ou Dinheiro como forma de pagamento.";
+            texto += "\n\n*Obrigado por escolher a Dois por Trufas! 🍫❤️*";
+
+            notaTexto.textContent = texto;
+            notaFiscal.style.display = 'block';
+
+            // Rolar até a nota fiscal
+            notaFiscal.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Função para copiar a nota
+        function copiarNota() {
+            const notaTexto = document.getElementById('nota-texto').textContent;
+
+            navigator.clipboard.writeText(notaTexto)
+                .then(() => {
+                    mostrarNotificacao('Nota copiada para a área de transferência!');
+                })
+                .catch(err => {
+                    console.error('Erro ao copiar texto: ', err);
+                    mostrarNotificacao('Não foi possível copiar a nota. Por favor, selecione e copie manualmente.');
+                });
+        }
+
+        // Função para enviar via WhatsApp
+        function enviarWhatsApp() {
+            const notaTexto = encodeURIComponent(document.getElementById('nota-texto').textContent);
+            const whatsappLink = `https://wa.me/5583935838450?text=${notaTexto}`;
+            window.open(whatsappLink, '_blank');
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', () => {
+            renderizarProdutos();
+
+            // Event listeners
+            document.getElementById('limpar-carrinho').addEventListener('click', limparCarrinho);
+            document.getElementById('finalizar-pedido').addEventListener('click', finalizarPedido);
+            document.getElementById('copiar-nota').addEventListener('click', copiarNota);
+            document.getElementById('enviar-whatsapp').addEventListener('click', enviarWhatsApp);
+        });
+
+        // Funções globais para uso nos botões
+        window.adicionarAoCarrinho = adicionarAoCarrinho;
+        window.removerDoCarrinho = removerDoCarrinho;
+    </script>
+</body>
+
+</html>
